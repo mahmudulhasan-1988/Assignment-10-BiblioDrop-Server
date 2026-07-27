@@ -65,9 +65,14 @@ app.get("/api/books", async (req, res) => {
     const database = await connectDB();
     const collection = database.collection("books");
 
-    const { search, category, status, sort, page = 1, limit = 12 } = req.query;
+    const { search, category, status, sort, page = 1, limit = 12, ownerId } = req.query;
 
     let query = {};
+
+    // Filter by ownerId if provided (for librarian's own books)
+    if (ownerId) {
+      query.ownerId = ownerId;
+    }
 
     if (search) {
       const regex = { $regex: search, $options: "i" };
@@ -195,6 +200,8 @@ app.post("/api/books", async (req, res) => {
       coverImage,
       isbn,
       publishedYear,
+      ownerId,
+      ownerName,
     } = req.body;
 
     if (!title || !author) {
@@ -214,6 +221,8 @@ app.post("/api/books", async (req, res) => {
       totalReviews: 0,
       isbn: isbn || "",
       publishedYear: publishedYear || now.getFullYear(),
+      ownerId: ownerId || "",
+      ownerName: ownerName || "",
       createdAt: now,
       updatedAt: now,
     };
