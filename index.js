@@ -34,7 +34,7 @@ async function connectDB() {
   
   app.post("/subscription", async (req, res) => {
     const { user, session_id } = req.body;
-
+    console.log(session_id);
     const isExistSession = await subscriptionCollection.findOne({session_id})
       if(isExistSession){
         return res.status(400).send({message: "Session already exist"})
@@ -49,6 +49,7 @@ async function connectDB() {
       { _id: new ObjectId(user.id) },
       { $set: { plan: "pro" } },
     );
+    res.send({message: "Subscription created successfully", subs_result, user_result})
   })
   
   return db;
