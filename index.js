@@ -562,7 +562,7 @@ app.delete("/api/users", async (req, res) => {
   }
 });
 
-// PATCH /api/users/:id/role - Update user role
+// ======PATCH /api/users/:id/role - Update user role======
 app.patch("/api/users/:id/role", async (req, res) => {
   try {
     const database = await connectDB();
@@ -591,7 +591,7 @@ app.patch("/api/users/:id/role", async (req, res) => {
   }
 });
 
-// DELETE /api/users/:id - Delete user by ID
+// =======DELETE /api/users/:id - Delete user by ID========
 app.delete("/api/users/:id", async (req, res) => {
   try {
     const database = await connectDB();
