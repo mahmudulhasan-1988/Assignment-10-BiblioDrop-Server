@@ -591,7 +591,7 @@ app.patch("/api/users/:id/role", async (req, res) => {
   }
 });
 
-// =======DELETE /api/users/:id - Delete user by ID========
+// ==========DELETE /api/users/:id - Delete user by ID==========
 app.delete("/api/users/:id", async (req, res) => {
   try {
     const database = await connectDB();
