@@ -611,6 +611,7 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
+
 // ==================== READING LIST ROUTES ====================
 
 // GET /api/reading-list - Get reading list
@@ -626,7 +627,6 @@ app.get("/api/reading-list", async (req, res) => {
     }
 
     const items = await collection.find({ userId }).sort({ addedAt: -1 }).toArray();
-
     const mapped = items.map((item) => ({
       ...item,
       _id: item._id?.toString() || "",
@@ -638,6 +638,7 @@ app.get("/api/reading-list", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch reading list" });
   }
 });
+
 
 // POST /api/reading-list - Add to reading list
 app.post("/api/reading-list", async (req, res) => {
@@ -665,7 +666,6 @@ app.post("/api/reading-list", async (req, res) => {
       category: category || "",
       addedAt: new Date(),
     };
-
     const result = await collection.insertOne(item);
 
     res.status(201).json({ ...item, _id: result.insertedId.toString() });
