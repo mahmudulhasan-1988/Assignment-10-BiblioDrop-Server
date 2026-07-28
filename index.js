@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { MongoClient, ObjectId } from "mongodb";
+import { jwtVerify } from "jose-cjs";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -235,6 +236,8 @@ app.post("/api/books", async (req, res) => {
     res.status(500).json({ error: "Failed to create book" });
   }
 });
+
+
 
 // =========PUT /api/books/:id - Update a book=========
 app.put("/api/books/:id", async (req, res) => {
