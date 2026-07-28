@@ -30,28 +30,28 @@ async function connectDB() {
 
   const subscriptionCollection = db.collection("subscription");
   const userCollection = db.collection("user");
-  
-  
+
+
   app.post("/subscription", async (req, res) => {
     const { user, session_id } = req.body;
     console.log(session_id);
-    const isExistSession = await subscriptionCollection.findOne({session_id})
-      if(isExistSession){
-        return res.status(400).send({message: "Session already exist"})
-      }
-    
+    const isExistSession = await subscriptionCollection.findOne({ session_id })
+    if (isExistSession) {
+      return res.status(400).send({ message: "Session already exist" })
+    }
+
     const subs_result = await subscriptionCollection.insertOne({
       userId: new ObjectId(user.id),
       session_id,
     });
-    
+
     const user_result = await userCollection.updateOne(
       { _id: new ObjectId(user.id) },
       { $set: { plan: "pro" } },
     );
-    res.send({message: "Subscription created successfully", subs_result, user_result})
+    res.send({ message: "Subscription created successfully", subs_result, user_result })
   })
-  
+
   return db;
 
 }
@@ -708,13 +708,11 @@ app.delete("/api/reading-list", async (req, res) => {
 });
 
 // ==================== HEALTH CHECK ====================
-
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
 // ==================== START SERVER ====================
-
 app.get("/", (req, res) => {
   res.send("Server is running fine!");
 });
