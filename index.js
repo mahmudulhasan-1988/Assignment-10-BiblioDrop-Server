@@ -500,7 +500,7 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-// PATCH /api/users - Update user
+// ============PATCH /api/users - Update user===========
 app.patch("/api/users", async (req, res) => {
   try {
     const database = await connectDB();
