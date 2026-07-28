@@ -670,6 +670,7 @@ app.post("/api/reading-list", async (req, res) => {
 
     res.status(201).json({ ...item, _id: result.insertedId.toString() });
   } catch (error) {
+
     // Handle duplicate key error from unique index (race condition)
     if (error.code === 11000) {
       return res.status(409).json({ error: "Book already in reading list" });
@@ -678,6 +679,7 @@ app.post("/api/reading-list", async (req, res) => {
     res.status(500).json({ error: "Failed to add to reading list" });
   }
 });
+
 
 // DELETE /api/reading-list?bookId=xxx - Remove from reading list
 app.delete("/api/reading-list", async (req, res) => {
