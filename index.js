@@ -538,7 +538,7 @@ app.patch("/api/users", async (req, res) => {
   }
 });
 
-// DELETE /api/users?id=xxx - Delete user
+// ========DELETE /api/users?id=xxx - Delete user========
 app.delete("/api/users", async (req, res) => {
   try {
     const database = await connectDB();
