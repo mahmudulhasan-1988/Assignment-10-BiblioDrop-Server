@@ -160,7 +160,7 @@ app.get("/api/books", async (req, res) => {
   }
 });
 
-// GET /api/books/:id - Get single book
+// =======GET /api/books/:id - Get single book========
 app.get("/api/books/:id", async (req, res) => {
   try {
     const database = await connectDB();
@@ -185,7 +185,7 @@ app.get("/api/books/:id", async (req, res) => {
   }
 });
 
-// POST /api/books - Create a book
+// =======POST /api/books - Create a book=====
 app.post("/api/books", async (req, res) => {
   try {
     const database = await connectDB();
@@ -236,7 +236,7 @@ app.post("/api/books", async (req, res) => {
   }
 });
 
-// PUT /api/books/:id - Update a book
+// =========PUT /api/books/:id - Update a book=========
 app.put("/api/books/:id", async (req, res) => {
   try {
     const database = await connectDB();
@@ -260,7 +260,7 @@ app.put("/api/books/:id", async (req, res) => {
   }
 });
 
-// DELETE /api/books/:id - Delete a book
+// =========DELETE /api/books/:id - Delete a book=========  
 app.delete("/api/books/:id", async (req, res) => {
   try {
     const database = await connectDB();
@@ -282,7 +282,7 @@ app.delete("/api/books/:id", async (req, res) => {
 
 // ==================== DELIVERIES ROUTES ====================
 
-// GET /api/deliveries - Get all deliveries
+// =======GET /api/deliveries - Get all deliveries========
 app.get("/api/deliveries", async (req, res) => {
   try {
     const database = await connectDB();
@@ -304,7 +304,7 @@ app.get("/api/deliveries", async (req, res) => {
   }
 });
 
-// POST /api/deliveries - Create a delivery
+// =======POST /api/deliveries - Create a delivery=======
 app.post("/api/deliveries", async (req, res) => {
   try {
     const database = await connectDB();
@@ -349,7 +349,7 @@ app.post("/api/deliveries", async (req, res) => {
   }
 });
 
-// PATCH /api/deliveries/:id - Update delivery status
+// =======PATCH /api/deliveries/:id - Update delivery status=======
 app.patch("/api/deliveries/:id", async (req, res) => {
   try {
     const database = await connectDB();
