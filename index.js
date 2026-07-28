@@ -380,7 +380,7 @@ app.patch("/api/deliveries/:id", async (req, res) => {
 
 // ==================== REVIEWS ROUTES ====================
 
-// GET /api/reviews - Get reviews for a book
+// ======GET /api/reviews - Get reviews for a book======
 app.get("/api/reviews", async (req, res) => {
   try {
     const database = await connectDB();
@@ -406,7 +406,7 @@ app.get("/api/reviews", async (req, res) => {
   }
 });
 
-// POST /api/reviews - Create a review
+// =========POST /api/reviews - Create a review======
 app.post("/api/reviews", async (req, res) => {
   try {
     const database = await connectDB();
@@ -454,7 +454,7 @@ app.post("/api/reviews", async (req, res) => {
   }
 });
 
-// DELETE /api/reviews/:id - Delete a review
+// =========DELETE /api/reviews/:id - Delete a review=========
 app.delete("/api/reviews/:id", async (req, res) => {
   try {
     const database = await connectDB();
